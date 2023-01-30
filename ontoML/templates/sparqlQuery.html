@@ -1,0 +1,46 @@
+{% extends 'base.html'%}
+
+{% block title %}
+    sparql Page
+{% endblock %}
+
+{% block content %}
+
+<body class="text-center">
+     <h1>SPARQL Query</h1>
+     <div class="container">
+         <form method="POST" class="form-register" style="color:white">
+             {{ form.hidden_tag() }}
+             <img class="mb-4" src="\i-nergIMG\i-nergy-logo-web.png" alt="">
+             <h1 class="h3 mb-3 font-weight-normal">
+                 Please enter the namespace and your query
+             </h1>
+             <br>
+             {{ form.namespace.label() }}
+             {{ form.namespace(class="form-control", placeholder="Name Space, URL or IRI") }}
+
+             {{ form.querytext.label() }}
+             {{ form.querytext(class="form-control", placeholder="Query Text") }}
+
+             <br>
+             {{ form.submit(class="btn btn-lg btn-block btn-secondary")}}
+
+         </form>
+     </div>
+     <br>
+     <br>
+     <div>
+          <td>
+             <button class="btn btn-outline btn-success">Perform inference</button>
+         </td>
+          <td>
+            <button class="btn btn-outline btn-info">Activate Reasoner</button>
+          </td>
+          <br>
+          <br>
+          <h2 class="btn btn-block btn-outline btn-danger"> <strong>Result Visualization</strong></h2>
+     </div>
+
+ </body>
+
+{% endblock %}

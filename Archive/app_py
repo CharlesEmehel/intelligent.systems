@@ -1,0 +1,60 @@
+from flask import Flask, render_template
+from markupsafe import escape
+
+app = Flask(__name__)
+
+@app.route("/hello")
+def hello_world():
+    return "<p>Hello, World!</p>"
+    #return render_template()
+
+@app.route("/device/<device>")
+def data_model(device):
+    return f'<hi> The data model for device: {device} is: </h1>:'
+
+@app.route("/<name>")
+def owl(name):
+   return f"OWL, {escape(name)}!"
+
+@app.route("/")
+@app.route("/home")
+def home_page():
+    return render_template('home.html')
+
+@app.route("/namespace")
+def namespace():
+    return render_template('namespace.html')
+
+@app.route("/vocabulary")
+def vocabulary():
+    return render_template('vocabulary.html')
+
+@app.route("/data_model")
+def data_model():
+    return render_template('data_model.html')
+
+   stringbox = [
+        {'L0': 4829.0, 'L1': 4809.2, 'L2': 4783.6, 'L95': 4903.6},
+        {'L0': 4829.0, 'L1': 4809.2, 'L2': 4783.6, 'L95': 4903.6},
+        {'L0': 4829.0, 'L1': 4809.2, 'L2': 4783.6, 'L95': 4903.6}
+    ]
+
+if __name__ == '__main__':
+    app.run(host='localhost', port=5001, debug=True) # Activate development Server
+
+# create the table schema in the database.
+with app.app_context():
+    db.create_all()
+
+item2 =Item(
+    entity="meter1",
+    type="equipmentContainer1",
+    locatedat='substation:rdnsubstation0011',
+    datecreated="2017-05-04T12:30:00Z1",
+    modifiedat= "2022-05-18T13:45:30Z1",
+    entityversion=3,
+    devicecategory='grid-related1'
+)
+with app.app_context():
+    db.session.add(item2)
+    db.session.commit()

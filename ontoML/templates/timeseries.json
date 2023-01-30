@@ -1,0 +1,36 @@
+{
+    "id": "urn:ngsi-ld:TimeSeriesMeasurement:TimeSeriesMeasurement:TSMDM-TSM-001",
+    "type": "TimeSeriesMeasurement",
+    "format": {
+        "type":  "DateTime",
+        "name":  "ISO8691",
+        "value": "[YYYY]-[MM]-[DD]T[hh]:[mm]:[ss]"
+    },
+    "measurementType": { # point or interval or series
+        "type": "Property",
+        "name": "point",
+        "value": "average"
+     },
+     "measurementInterval": {
+            "type": "Property",
+            "value": "minutes" # [micro,  milli, second, minutes, hour, day, week, month ....]
+     },
+     "observedAt": {
+          "type": "Property",
+          "value":"2020-02-24T22:00:00.173Z"
+     },
+     "times": {
+        "type": "Property",
+        "interval": "15",
+        "value": {
+            "T1": "2020-02-24T00:00:00Z",
+            "T2": "2020-02-24T22:00:15Z",
+            "T3": "2020-02-24T22:00:30Z",
+            "L3": "2020-02-24T22:00:45Z",
+            "tn": "......................"
+     },
+     "@context": [
+        "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",
+        "https://raw.githubusercontent.com/smart-data-models/dataModel.Energy/master/context.jsonld"
+    ]
+}

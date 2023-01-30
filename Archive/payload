@@ -1,0 +1,6 @@
+]
+        {'id': 1, 'entity': 'meter', 'type': 'equipmentContainer', 'locatedat': 'substation:rdnsubstation001', 'datecreated':  "2017-05-04T12:30:00Z", 'modifiedat': "2022-05-18T13:45:30Z", 'entityversion': 2, 'devicecategory': 'grid-related'},
+        {'id': 2, 'entity': 'pmu', 'type': 'equipmentContainer', 'locatedat': 'substation:bfpsubstation001', 'datecreated':  "2017-05-04T12:30:00Z", 'modifiedat': "2022-05-18T13:45:30Z", 'entityversion': 2, 'devicecategory': 'grid-related'},
+        {'id': 3, 'entity': 'inverter', 'type': 'equipmentContainer', 'locatedat': 'substation:asmsubstation001', 'datecreated':  "2017-05-04T12:30:00Z", 'modifiedat': "2022-05-18T13:45:30Z", 'entityversion': 2, 'devicecategory': 'grid-related'},
+        {'id': 4, 'entity': 'pv', 'type': 'equipmentContainer', 'locatedat': 'substation:veoliasubstation001', 'datecreated':  "2017-05-04T12:30:00Z", 'modifiedat': "2022-05-18T13:45:30Z", 'entityversion': 2, 'devicecategory': 'grid-related'}
+]

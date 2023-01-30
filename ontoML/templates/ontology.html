@@ -1,0 +1,69 @@
+{% extends 'base.html'%}
+
+{% block title %}
+    ontology Page
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="content">
+    <h1>Ontology</h1>
+     <td>
+        <button class="btn btn-outline btn-primary">Import data</button>
+    </td>
+    <td>
+        <button class="btn btn-outline btn-info">Select ontology</button>
+    </td>
+    <td>
+        <button class="btn btn-outline btn-warning">Learn ontology</button>
+    </td>
+    <br>
+    <br>
+    <table class="table table-hover table-dark">
+           <thead>
+               <tr>
+                   <!-- Your Columns HERE -->
+                   <th scope="col">Ontology</th>
+                   <th scope="col">Domain</th>
+                   <th scope="col">type</th>
+                   <th scope="col">T-Box</th>
+                   <th scope="col">R-Box</th>
+                   <th scope="col">A-Box</th>
+                   <th scope="col"></th>
+                   <th scope="col"></th>
+               </tr>
+           </thead>
+           <tbody>
+               <!-- Your rows inside the table HERE: -->
+                   {% for item in items %}
+                       <tr>
+                           <td>{{ item.ontology }}</td>
+                           <td>{{ item.domain }}</td>
+                           <td>{{ item.type }}</td>
+                           <td>{{ item.t-box }}</td>
+                           <td>{{ item.r-box }}</td>
+                           <td>{{ item.a-box }}</td>
+                           <td>
+                               <button class="btn btn-outline btn-danger">Delete</button>
+                           </td>
+                           <td>
+                               <button class="btn btn-outline btn-info">Update ontology</button>
+                           </td>
+                       </tr>
+
+                   {% endfor %}
+           </tbody>
+    </table>
+    <td>
+        <button class="btn btn-outline btn-success">Align ontology</button>
+    </td>
+    <td>
+        <button class="btn btn-outline btn-light">Activate ontology Annotation</button>
+    </td>
+    <br>
+    <br>
+    <h2 class="btn btn-block btn-outline btn-danger"> <strong>RDF Graph Visualization</strong></h2>
+</div>
+{% endblock %}

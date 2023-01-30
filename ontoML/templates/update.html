@@ -1,0 +1,77 @@
+{% extends 'base.html'%}
+
+{% block title %}
+    datamodel Page
+{% endblock %}
+
+
+{% block content %}
+
+<div class="content">
+    <h1>Data Model</h1>
+
+    <td>
+        <button class="btn btn-outline btn-primary">Upload pilot payload</button>
+    </td>
+    <td>
+        <button class="btn btn-outline btn-warning">Check data model</button>
+    </td>
+    <br>
+    <br>
+    <table class="table table-hover table-dark">
+           <thead>
+               <tr>
+                   <!-- Your Columns HERE -->
+                   <th scope="col">id</th>
+                   <th scope="col">entity</th>
+                   <th scope="col">type</th>
+                   <th scope="col">locatedAt</th>
+                   <th scope="col">dateCreated</th>
+                   <th scope="col">modifiedAt</th>
+                   <th scope="col">entityVersion</th>
+                   <th scope="col">deviceCategory
+                   <th scope="col"></th>
+                   <th scope="col"></th>
+               </tr>
+           </thead>
+           <tbody>
+               <!-- Your rows inside the table HERE: -->
+                   {% for item in items %}
+                       <tr>
+                           <td>{{ item.id }}</td>
+                           <td>{{ item.entity }}</td>
+                           <td>{{ item.type }}</td>
+                           <td>{{ item.locatedat }}</td>
+                           <td>{{ item.datecreated }}</td>
+                           <td>{{ item.modifiedat }}</td>
+                           <td>{{ item.entityversion }}</td>
+                           <td>{{ item.devicecategory }}</td>
+                           <td>
+                               <button class="btn btn-outline btn-danger">Delete</button>
+                           </td>
+                           <td>
+                               <button class="btn btn-outline btn-info">Update</button>
+                           </td>
+                       </tr>
+
+                   {% endfor %}
+           </tbody>
+    </table>
+    <td>
+        <button class="btn btn-outline btn-success">Create data model</button>
+    </td>
+    <td>
+        <button class="btn btn-outline btn-light">Harmonize Data</button>
+    </td>
+    <br>
+    <br>
+    <h2 class="btn btn-block btn-outline btn-danger"> <strong>Result Visualization</strong></h2>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
