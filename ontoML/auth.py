@@ -43,6 +43,8 @@ def user_page():
 @app.route("/login", methods=['GET', 'POST'])
 def login_page():
     form = loginRegisterForm()
+    if form.validate_on_submit():
+        pass
     return render_template('login.html', form=form)
 
 @app.route("/logout")

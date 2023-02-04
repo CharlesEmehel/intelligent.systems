@@ -3,6 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 from os import path
 from flask_bcrypt import Bcrypt
+from flask_login import LoginManager
+
 db = SQLAlchemy()
 DB_NAME = "appl.db"
 # create the app; configure the SQLite database, relative to the app instance folder; create the
