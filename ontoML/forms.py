@@ -49,5 +49,13 @@ class SPARQLQueryForm(FlaskForm):
             raise ValidationError("Entity name already exists! Please confirm the spelling or check the data model")
     namespace = StringField(label='Namespace', validators=[Length(min=2, max=30), DataRequired()])
     querytext = StringField(label='Query Text', validators=[Length(min=2, max=200), DataRequired()])
-    submit = SubmitField(label=' Run Query')
+    submit = SubmitField(label='Run Query')
 
+
+class loginRegisterForm(FlaskForm):
+    username = StringField(label='User name:', validators=[DataRequired()])
+    password = StringField(label='Password:', validators=[DataRequired()])
+    submit = SubmitField(label='Sign in')
+
+
+    pass

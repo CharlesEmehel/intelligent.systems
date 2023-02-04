@@ -1,7 +1,7 @@
 from ontoML import app
 from . import db
 from ontoML.forms import UserRegisterForm
-from ontoML.forms import EntityRegisterForm
+from ontoML.forms import loginRegisterForm
 from ontoML.forms import SPARQLQueryForm
 from .models import User, Item
 from flask import render_template, redirect, url_for, flash
@@ -42,7 +42,8 @@ def user_page():
 
 @app.route("/login", methods=['GET', 'POST'])
 def login_page():
-    return render_template('login.html')
+    form = loginRegisterForm()
+    return render_template('login.html', form=form)
 
 @app.route("/logout")
 def logout_page():

@@ -91,7 +91,7 @@ def profile_page(username):
     return render_template('profile.html', name=username)
 
 @app.route("/delete/<int:id>")
-def delete(id):
+def delete_page(id):
     item_to_delete = Item.query.get_or_404(id)
     try:
         db.session.delete(item_to_delete)
@@ -101,3 +101,4 @@ def delete(id):
         flash('Account could not be deleted!', category='danger')
         return redirect(url_for('/home'))
     # return render_template('sparqlQuery.html', name=name)
+
