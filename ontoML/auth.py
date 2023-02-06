@@ -10,6 +10,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 
 @app.route("/userRegister", methods=['GET', 'POST'])
+@login_required
 def userRegister_page():
     form = UserRegisterForm()
     if form.validate_on_submit():
@@ -32,6 +33,7 @@ def userRegister_page():
     return render_template('userRegister.html', form=form)
 
 @app.route("/users")
+@login_required
 def users_page():
     try:
         users = User.query.all()

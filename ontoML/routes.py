@@ -8,6 +8,7 @@ from flask_login import login_user, logout_user, login_required
 
 
 @app.route("/entityRegister", methods=['GET', 'POST'])
+@login_required
 def entityRegister_page():
     form = EntityRegisterForm()
     if form.validate_on_submit():
@@ -33,6 +34,7 @@ def entityRegister_page():
     return render_template('entityRegister.html', form=form)
 
 @app.route("/sparqlquery", methods=['GET', 'POST'])
+@login_required
 def sparqlquery_page():
     form = SPARQLQueryForm()
     if form.validate_on_submit():
@@ -63,6 +65,7 @@ def namespaces_page():
     return render_template('namespaces.html')
 
 @app.route("/datamodel")
+@login_required
 def datamodel_page():
     try:
         items = Item.query.all()
@@ -73,15 +76,18 @@ def datamodel_page():
 
 
 @app.route("/ontology")
+@login_required
 def ontology_page():
     return render_template('ontology.html')
 
 @app.route("/API")
+@login_required
 def api_page():
     return render_template('api.html')
 
 @app.route("/api/timeseries")
 @app.route("/timeseries")
+@login_required
 def timeseries_page():
     return render_template('timeseries.html')
     #return render_template('timeseries.json')
