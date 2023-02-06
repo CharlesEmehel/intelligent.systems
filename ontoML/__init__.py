@@ -12,10 +12,12 @@ DB_NAME = "appl.db"
 # def create_app():
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}' # ///-Rel path; ////-Abs. path
-app.config['SECRET_KEY'] = os.urandom(12).hex()  # create a secret key required for CSRF to display the form for session and cookies
+app.config['SECRET_KEY'] = os.urandom(12).hex()  #create a secret key required for CSRF to display the form for session and cookies
 db.init_app(app)
 bcrypt = Bcrypt(app)
+loging_manager = LoginManager(app)
 # return app
+
 
 import ontoML.models
 
