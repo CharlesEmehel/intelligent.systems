@@ -61,6 +61,7 @@ def home_page():
     return render_template('home.html')
 
 @app.route("/namespaces")
+@login_required
 def namespaces_page():
     return render_template('namespaces.html')
 
