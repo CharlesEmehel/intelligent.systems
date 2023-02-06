@@ -55,7 +55,6 @@ def sparqlquery_page():
 
 @app.route("/")
 @app.route("/home")
-@login_required
 def home_page():
     return render_template('home.html')
 
@@ -106,6 +105,7 @@ def delete_page(id):
 
 
 @app.route("/info")
+@login_required
 def info_page():
     return render_template('info.html')
 
