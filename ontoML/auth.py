@@ -10,7 +10,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 
 @app.route("/userRegister", methods=['GET', 'POST'])
-@login_required
 def userRegister_page():
     form = UserRegisterForm()
     if form.validate_on_submit():
@@ -21,7 +20,8 @@ def userRegister_page():
         try:
             db.session.add(created_user)
             db.session.commit()
-            flash('Account Created!', category='success')
+            login_user(created_user)
+            flash(f"Account Created successfully! You are now logged in as {created_user}", category='success')
             return redirect(url_for('user_page'))
         except:
             flash('There was an issue adding a user!', category='danger')
