@@ -51,7 +51,7 @@ def login_page():
         ):
             login_user(attempted_user)
             flash(f'success! You are logged in as: {attempted_user.username}', category='success')
-            return redirect(url_for('home_page'))
+            return redirect(url_for('info_page'))
         else:
             flash('Username and password do not match! Please try again', category='danger')
 
