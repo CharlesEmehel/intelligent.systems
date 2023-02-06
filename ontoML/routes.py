@@ -3,6 +3,7 @@ from ontoML import db
 from ontoML.models import Item, Query, User
 from ontoML.forms import EntityRegisterForm, SPARQLQueryForm, UserRegisterForm
 from flask import render_template, redirect, url_for, flash, request
+from flask_login import login_user, logout_user, login_required
 
 
 
@@ -54,6 +55,7 @@ def sparqlquery_page():
 
 @app.route("/")
 @app.route("/home")
+@login_required
 def home_page():
     return render_template('home.html')
 
@@ -101,4 +103,9 @@ def delete_page(id):
         flash('Account could not be deleted!', category='danger')
         return redirect(url_for('/home'))
     # return render_template('sparqlQuery.html', name=name)
+
+
+@app.route("/info")
+def info_page():
+    return render_template('info.html')
 

@@ -16,6 +16,8 @@ app.config['SECRET_KEY'] = os.urandom(12).hex()  #create a secret key required f
 db.init_app(app)
 bcrypt = Bcrypt(app)
 loging_manager = LoginManager(app)
+loging_manager.login_view = "login_page"
+loging_manager.login_message_category = "info"
 # return app
 
 
