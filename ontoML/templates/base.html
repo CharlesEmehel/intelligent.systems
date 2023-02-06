@@ -60,6 +60,12 @@
                      <li class="nav-item">
                          <a class="nav-link">Welcome, {{ current_user.username }}</a>
                      </li>
+                      <li class="nav-item">
+                         <a class="nav-link" href="{{ url_for('users_page')}}">Users</a>
+                     </li>
+                      <li class="nav-item">
+                         <a class="nav-link" href="{{ url_for('userRegister_page') }}">Register</a>
+                     </li>
                      <li class="nav-item">
                          <a class="nav-link" href="{{ url_for('logout_page') }}">Logout</a>
                      </li>
