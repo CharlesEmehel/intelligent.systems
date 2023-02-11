@@ -104,9 +104,10 @@ def delete_page(id):
     try:
         db.session.delete(item_to_delete)
         db.session.commit()
+        flash('Item has been deleted!', category='success')
         return redirect('/')
     except:
-        flash('Account could not be deleted!', category='danger')
+        flash('Item could not be deleted!', category='danger')
         return redirect(url_for('/home'))
     # return render_template('sparqlQuery.html', name=name)
 
