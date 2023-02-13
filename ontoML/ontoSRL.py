@@ -1,5 +1,7 @@
 from owlready2 import *
 import rdflib
+import tensorflow
+import torch
 
 onto_path.append("D:/Users/cem/data/git/namespace3/ontoRepo")
 onto = get_ontology("https://github.com/I-NERGY/DataModel/blob/main/Resources/Ontology/OWL/i-nergy-ontology-01.owl")
