@@ -6,7 +6,6 @@ from flask import render_template, redirect, url_for, flash, request
 from flask_login import login_user, logout_user, login_required
 
 
-
 @app.route("/entityRegister", methods=['GET', 'POST'])
 @login_required
 def entityRegister_page():
@@ -85,6 +84,11 @@ def ontology_page():
 @login_required
 def api_page():
     return render_template('api.html')
+
+@app.route("/data")
+@login_required
+def data():
+    return render_template('data.json')
 
 @app.route("/api/timeseries")
 @app.route("/timeseries")
