@@ -4,6 +4,7 @@ import os
 from os import path
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
+import urllib.request, urllib.response, urllib.parse, urllib.error
 
 db = SQLAlchemy()
 DB_NAME = "appl.db"

@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+
+{% block title %}
+    Home Page
+{% endblock %}
+
+{% block content %}
+    <h1>Check Data Model Results</h1>
+    {% for count in counts %}
+        {{ count }}
+    {% endfor %}
+<br>
+<br>
+<br>
+<br>
+    {{ counts }}
+{% endblock %}

@@ -1,1 +1,28 @@
-{"id": "urn:ngsi-ld:ActivePower:id:VBMS:00402073", "dateCreated": "2005-09-09T21:18:44Z", "dateModified": "2014-04-21T17:52:28Z", "source": "Plant do situation agency. Season produce natural me. How listen easy political very follow speak relationship.", "name": "Center whole trip few attack into paper. Nothing environmental apply not tax bar important.", "alternateName": "These discuss will himself adult identify course any. Land nor eat factor interview can.", "description": "Push cold two consider. Wish pay unit. Pattern grow increase make easy.", "dataProvider": "Direction perform respond so table military model. Operation cover artist pressure firm item. Fact rest already never as six start.", "owner": ["urn:ngsi-ld:ActivePower:items:ESFV:90174214", "urn:ngsi-ld:ActivePower:items:DWLF:20438901"], "seeAlso": ["urn:ngsi-ld:ActivePower:items:RWTQ:35407369", "urn:ngsi-ld:ActivePower:items:RBYU:35934282"], "location": {"type": "Point", "coordinates": [-67.3822005, -20.398256]}, "address": {"streetAddress": "Kitchen organization eye performance system. Tell capital middle indeed door establish. Appear deal through continue. Phone individual lead scene why voice.", "addressLocality": "Prepare manager small room. Nor store know way end owner international. City standard conference year for list while.", "addressRegion": "Buy scene full help. Nature country answer difference can.", "addressCountry": "Point rest specific trade participant. Health culture create no. Provide security must computer theory authority traditional feeling.", "postalCode": "Too far throw student. Age another writer option dream politics.", "postOfficeBoxNumber": "Price medical trip nice serious staff. History movement along.", "streetNr": "Whether style under authority.", "district": "Level language final wide several and this. Admit rich floor other blue every other."}, "areaServed": "Season discuss election tend still already. Yet trade third moment.", "type": "ActivePower", "multiplier": {"type": "Property", "value": 884.1}, "unit": {"type": "Property", "value": 974.7}, "value": {"type": "Property", "value": 970.5}, "@context": ["https://smartdatamodels.org/context.jsonld"]}
+{
+    "id": "urn:ngsi-ld:ActivePower:id:VBMS:00402073", 
+    "dateCreated": "2005-09-09T21:18:44Z", 
+    "dateModified": "2014-04-21T17:52:28Z", 
+    "source": "Plant do situation agency. Season produce natural me. How listen easy political very follow speak relationship.", 
+    "name": "Center whole trip few attack into paper. Nothing environmental apply not tax bar important.", 
+    "alternateName": "These discuss will himself adult identify course any. Land nor eat factor interview can.", 
+    "description": "Push cold two consider. Wish pay unit. Pattern grow increase make easy.", 
+    "dataProvider": "Direction perform respond so table military model. Operation cover artist pressure firm item. Fact rest already never as six start.", 
+    "owner": ["urn:ngsi-ld:ActivePower:items:ESFV:90174214", "urn:ngsi-ld:ActivePower:items:DWLF:20438901"], 
+    "seeAlso": ["urn:ngsi-ld:ActivePower:items:RWTQ:35407369", "urn:ngsi-ld:ActivePower:items:RBYU:35934282"], 
+    "location": {"type": "Point", "coordinates": [-67.3822005, -20.398256]}, 
+    "address": {"streetAddress": "Kitchen organization eye performance system. Tell capital middle indeed door establish. Appear deal through continue. Phone individual lead scene why voice.", 
+    "addressLocality": "Prepare manager small room. Nor store know way end owner international. City standard conference year for list while.", 
+    "addressRegion": "Buy scene full help. Nature country answer difference can.", 
+    "addressCountry": "Point rest specific trade participant. Health culture create no. Provide security must computer theory authority traditional feeling.", 
+    "postalCode": "Too far throw student. Age another writer option dream politics.", 
+    "postOfficeBoxNumber": "Price medical trip nice serious staff. History movement along.", 
+    "streetNr": "Whether style under authority.", 
+    "district": "Level language final wide several and this. Admit rich floor other blue every other."}, 
+    "areaServed": "Season discuss election tend still already. Yet trade third moment.", 
+    "type": "ActivePower", 
+    "multiplier": {"type": "Property", "value": 884.1}, 
+    "unit": {"type": "Property", "value": 974.7}, 
+    "value": {"type": "Property", "value": 970.5}, 
+    "@context": ["https://smartdatamodels.org/context.jsonld"]
+
+}

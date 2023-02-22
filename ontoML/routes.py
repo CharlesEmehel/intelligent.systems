@@ -4,6 +4,7 @@ from ontoML.models import Item, Query, User
 from ontoML.forms import EntityRegisterForm, SPARQLQueryForm, UserRegisterForm
 from flask import render_template, redirect, url_for, flash, request
 from flask_login import login_user, logout_user, login_required
+import urllib.request, urllib.response, urllib.parse, urllib.error
 
 
 @app.route("/entityRegister", methods=['GET', 'POST'])
@@ -120,4 +121,16 @@ def delete_page(id):
 @login_required
 def info_page():
     return render_template('info.html')
+
+@app.route("/run_script")
+@login_required
+def run_script():
+    urlHandler = urllib.request.urlopen('https://raw.githubusercontent.com/smart-data-models/dataModel.Consumption/d0de8a34d4cc466ff86434270afb5c2f76845654/context.jsonld')
+    counts = dict()
+    for line in urlHandler:
+        words = line.decode().split()
+        for word in words:
+            counts[word] = counts.get(word, 0) + 1
+
+    return render_template('result.html', counts=counts)
 
