@@ -110,10 +110,10 @@ def delete_page(id):
         db.session.delete(item_to_delete)
         db.session.commit()
         flash('Item has been deleted!', category='success')
-        return redirect('/')
+        return redirect(url_for('datamodel_page'))
     except:
         flash('Item could not be deleted!', category='danger')
-        return redirect(url_for('/home'))
+        return redirect(url_for('datamodel_page'))
     # return render_template('sparqlQuery.html', name=name)
 
 

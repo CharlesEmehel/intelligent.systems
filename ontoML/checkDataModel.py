@@ -1,5 +1,5 @@
 import urllib.request, urllib.response, urllib.parse, urllib.error
 
-urlHandler = urllib.request.urlopen('https://raw.githubusercontent.com/smart-data-models/dataModel.Consumption/d0de8a34d4cc466ff86434270afb5c2f76845654/context.jsonld')
+urlHandler = urllib.request.urlopen('https://sargon-n5geh.netlify.app/ontologies/Sargon.ttl')
 for line in urlHandler:
     print(line.decode().strip())
