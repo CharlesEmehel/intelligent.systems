@@ -122,10 +122,17 @@ def delete_page(id):
 def info_page():
     return render_template('info.html')
 
+@app.route("/nifi_interface")
+@login_required
+def nifi_interface_page():
+    pass
+
+    return render_template('nifi.html')
+
 @app.route("/run_script")
 @login_required
 def run_script():
-    urlHandler = urllib.request.urlopen('https://raw.githubusercontent.com/smart-data-models/dataModel.Consumption/d0de8a34d4cc466ff86434270afb5c2f76845654/context.jsonld')
+    urlHandler = urllib.request.urlopen('https://sargon-n5geh.netlify.app/ontologies/Sargon.ttl')
     counts = dict()
     for line in urlHandler:
         words = line.decode().split()

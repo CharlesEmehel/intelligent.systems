@@ -43,10 +43,13 @@
                     <a class="nav-link" href="{{ url_for('ontology_page') }}">Ontology</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('sparqlquery_page') }}">SPARQL Query</a>
+                    <a class="nav-link" href="{{ url_for('sparqlquery_page') }}">Validator</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('api_page') }}">API Service</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('nifi_interface_page') }}">NiFi Interface</a>
                 </li>
             </ul>
               {% if current_user.is_authenticated %}
