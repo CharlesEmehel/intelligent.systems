@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% from "macros.html" import check, position %}
+​
+{% block header %}
+  <h1>{% block title %}Coffeelist Management{% endblock %}</h1>
+{% endblock %}
+​
+{% block content %}
+{{ super() }}
+    <div class="container">
+    <form method="post" action="{{ url_for('new_billing_cycle') }}">
+        <a class="btn btn-outline-primary m-2" data-bs-toggle="modal" data-bs-target="#listFormModal">New Crosslist</a>
+        <button type="submit" class="btn btn-outline-success m-2">New Bill</button>
+    </form>
+    <table class="table table-striped">
+        <thead class="thead-light">
+            <th scope="col">ID</th>
+            <th scope="col">Start</th>
+            <th scope="col">End</th>
+            <th scope="col">People</th>
+            <th scope="col">Total Coffees</th>
+            <th scope="col">Total Money</th>
+            <th scope="col"></th>
+        </thead>
+        <tbody>
+        {% for l in lists %}
+            <tr>
+                <th scope="row">{{ l.cross_list_id }}</th>
+                <th scope="row">{{ l.start }}</th>
+                <th scope="row">{{ l.end }}</th>
+                <th scope="row">{{ l.entries|length }}</th>
+                <th scope="row">{{ l.checked }}</th>
+                <th scope="row">{{ l.checked|default(0, 'true') * l.price_per_cup }}</th>
+                <th scope="row">
+                    {% if l.bill_id != None %}
+                    <a class="btn btn-secondary" href="{{ url_for('bill_cycle',id=l.bill_id) }}" target="_blank">
+                    {% else %}
+                    <a class="btn btn-secondary disabled">
+                    {% endif %}
+                        <i class="bi bi-currency-euro"></i>
+                    </a>
+                    <a class="btn btn-secondary" href="{{ url_for('list',id=l.cross_list_id) }}" target="_blank">
+                        <i class="bi bi-info-lg"></i>
+                    </a>
+                    <button class="btn btn-danger" data-url="{{ url_for('list',id=l.cross_list_id) }}" onclick="deleteEndpoint(event)">
+                        <i class="bi bi-trash3"></i>
+                    </button>
+                </th>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+​
+​
+<div class="modal" tabindex="-1" id="listFormModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    <form method="post" href="{{ url_for('lists') }}">
+      <div class="modal-header">
+        <h5 class="modal-title">Create new Crosslist</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body row">
+        <div class="col-sm-6">
+          {{ list_form.start.label(class="form-label") }}
+          {{ list_form.start(class="form-control") }}
+        </div>
+        <div class="col-sm-6">
+          {{ list_form.end.label(class="form-label") }}
+          {{ list_form.end(class="form-control") }}
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+    </form>
+    </div>
+​
+  </div>
+</div>
+​
+{% endblock %}
+​
+{% block script %}
+{{ super() }}
+    <script>
+        function deleteEndpoint(event) {
+            const XHR = new XMLHttpRequest();
+            XHR.addEventListener("load", (event) => {
+                location.reload()
+            });
+            XHR.addEventListener("error", (event) => {
+                alert('Oops! Something went wrong.');
+            });
+            // Set up our request
+            XHR.open("DELETE", event.currentTarget.attributes["data-url"].value );
+            XHR.send();
+        }
+    </script>
+{% endblock %}
