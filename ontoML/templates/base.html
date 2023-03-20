@@ -15,7 +15,7 @@
    <body>
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         
-          <a class="navbar-brand" href="{{ url_for('home_page') }}"><h4>Andromeda</h4></a>
+          <a class="navbar-brand text-danger font-italic" href="{{ url_for('home_page') }}"><h4>Andromeda</h4></a>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
@@ -40,7 +40,10 @@
                     <a class="nav-link" href="{{ url_for('datamodel_page') }}">Data Model</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('ontology_page') }}">Ontology</a>
+                    <a class="nav-link" href="{{ url_for('ontology_page') }}">OntoAutoLearn</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('entityRegister_page') }}">OntoVizDev</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('sparqlquery_page') }}">Validator</a>
