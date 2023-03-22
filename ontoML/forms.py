@@ -38,6 +38,10 @@ class EntityRegisterForm(FlaskForm):
     modifiedat = StringField(label='Modified At', validators=[Length(min=2, max=30), DataRequired()])
     entityversion = StringField(label='Entity Version', validators=[Length(min=1, max=30), DataRequired()])
     devicecategory = StringField(label='Device Category', validators=[Length(min=2, max=30), DataRequired()])
+    #entityconstraint = StringField(label='Device Category', validators=[Length(min=2, max=30), DataRequired()])
+    #minDataValue = StringField(label='Device Category', validators=[Length(min=2, max=30), DataRequired()])
+    #maxDataValue = StringField(label='Device Category', validators=[Length(min=2, max=30), DataRequired()])
+    #entityPropertyList = StringField(label='Device Category', validators=[Length(min=2, max=30), DataRequired()])
     submit = SubmitField(label='Add Entity')
 
 
