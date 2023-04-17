@@ -1,5 +1,8 @@
 from owlready2 import *
 import rdflib
+from rdflib import Namespace, Literal
+import brickschema
+from brickschema.namespaces import A, BRICK, UNIT
 import tensorflow
 import torch
 
@@ -35,3 +38,28 @@ sync_reasoner()
 # test_pizza.__class__   # onto.NonVegetarianPizza
 
 # test_pizza.eat()  # Beurk! I'm vegetarian !
+
+
+# create a namespace for the building
+BLDG = Namespace("urn:my-building-name#")
+
+# create a graph object to store the Brick model
+g = brickschema.Graph()
+g.bind("bldg", BLDG)
+
+# create a datastructure for floors + rooms
+rooms_and_floors = {
+    "Floor1": ["Room1", "Room2", "Room3"],
+    "Floor2": ["Room4"],
+}
+
+for floor, room_list in rooms_and_floors.items():
+    # Use the strings in the datastructure to refer to entities in the Brick model.
+    # By putting "BLDG[floor]" into the graph, we implicitly create the entity.
+    g.add((BLDG[floor], A, BRICK.Floor))
+    for room in room_list:
+        g.add((BLDG[room], A, BRICK.Room))
+        g.add((BLDG[room], BRICK.isPartOf, BLDG[floor]))
+
+# save the file to disk
+g.serialize("my-building.ttl", format="ttl")

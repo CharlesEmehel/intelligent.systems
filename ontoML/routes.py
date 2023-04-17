@@ -119,8 +119,8 @@ def delete_page(id):
 
 @app.route("/info")
 @login_required
-def info_page():
-    return render_template('info.html')
+def use_case_page():
+    return render_template('useCase.html')
 
 @app.route("/nifi_interface")
 @login_required
