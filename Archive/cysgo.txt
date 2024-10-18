@@ -1,0 +1,126 @@
+import networkx as nx
+from owlready2 import get_ontology, Thing, ObjectProperty, DataProperty
+from pyvis.network import Network
+from rdflib import Graph, Namespace, Literal
+from rdflib.namespace import RDF, RDFS
+
+ontoaienergy = "http://energyaiontonamespace.org/energyaionton.owl"
+aieo = Namespace(ontoaienergy + "#")
+
+def create_ontology():
+   onto =  get_ontology("http://energyaiontonamespace.org/energyaionton.owl")
+   g = Graph()
+
+   with onto:
+
+        class Data(Thing):
+            pass
+
+        class System(Thing):
+            pass
+
+        class ObjectiveFunction(Thing):
+            pass
+
+        class DataAnalytics(Thing):
+            pass
+
+        class EnergySource(Thing):
+            pass
+
+        class PowerPlant(Thing):
+            pass
+
+        class EnergyLoad(Thing):
+            pass
+
+        class Emission(Thing):
+            pass
+
+        class contains(ObjectProperty):
+            domain = [System]
+            range = [System]
+
+        class contains(ObjectProperty):
+            domain = [Data]
+            range = [Data]
+
+        class producesEmission(ObjectProperty):
+            domain = [PowerPlant]
+            range = [Emission]
+
+        class usesSource(ObjectProperty):
+            domain = [PowerPlant]
+            range = [EnergySource]
+
+        class hasLoad(ObjectProperty):
+            domain = [PowerPlant]
+            range = [EnergyLoad]
+
+        class hasName(DataProperty):
+            domain = [Data]
+            range = [str]
+
+        class hasNumber(DataProperty):
+            domain = [Data]
+            range = [int]
+
+        class hasNumber(DataProperty):
+            domain = [Data]
+            range = [int]
+
+        residence = EnergyLoad()
+        commercial = EnergyLoad()
+        industrial = EnergyLoad()
+
+        plant1 = PowerPlant()
+        plant1 = usesSource()
+        plant1.hasLoad = [residence]
+
+        plant2 = PowerPlant()
+        plant2 = usesSource()
+        plant2.hasLoad = [commercial]
+
+        plant3 = PowerPlant()
+        plant3 = usesSource()
+        plant3.hasLoad = [industrial]
+
+        co2 = Emission()
+        plant3.producesEmision = [co2]
+
+        # reasoner.sync_reasoner()
+
+        ontoaienergy.save(file="energyaionton.owl", format="rdfxml")
+
+
+        return g
+
+def visualize_ontology(g: Graph):
+    G = nx.MultiDiGraph()
+
+    for subj, pred, obj in g:
+        G.add_edge(subj, obj, title=str(pred))
+        nt = Network(notebook=True, cdn_resources='remote')
+        nt.from_nx(G)
+
+    color_map = {
+        aieo.Energy
+
+    }
+
+    for node in nt.nodes:
+        node["shape"] = "ellipse"
+        node["size"] = 20
+        if node["id"] in color_map:
+
+
+
+
+
+
+
+# Press the green button in the gutter to run the script.
+if __name__ == '__main__':
+    create_ontology = create_ontology()
+    print("Ontology created: ", create_ontology)
+

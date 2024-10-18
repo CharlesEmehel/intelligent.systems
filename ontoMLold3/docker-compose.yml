@@ -1,0 +1,99 @@
+version: '3.9'
+
+services:
+  andromedad:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: andromeda-web:${ANDROMEDA_VERSION:-1.0}
+    hostname: andromeda
+    container_name: andromeda-om
+    restart: always
+    ports:
+      - "5001:5001" # Maps port 5001 on the host to port 5001 on the container, allowing access to the Flask application.
+    volumes:
+      - .:/app
+      - ./OntoML:/app/OntoML   # Mount the OntoML package folder.
+      - ./data:/app/data       # Mount the data folder.
+      - ./db:/app/db           # Mount the data folder.
+      - sqlitedata:/var/lib/sqlite/data
+      - static:${STATIC_ROOT:-/var/andromeda/static/}
+      - media:${MEDIA_ROOT:-/var/andromeda/media/}    
+    env_file:
+      - .env 
+    environment:  # Sets environment variables inside the container. It sets `FLASK_APP` to `app.py` and `FLASK_ENV` to `development`, configuring Flask to run in development mode.
+      - DATABASE_USER=${SQLITE_USER:-andromeda}
+      - DATABASE_PASSWORD=${SQLITE_PASSWORD:-sklitepw}
+      - DATABASE_NAME=${SQLITE_DB:-andromeda}
+      - FLASK_APP=run.py      # Set the Flask app file.
+      - FLASK_ENV=development # Set Flask environment to development.
+      - KEYCLOAK_SERVER_URL=http://keycloak:8080/auth
+      - KEYCLOAK_REALM=andromeda-realm
+      - KEYCLOAK_ID=andromeda-client
+      - KEYCLOAK_CLIENT_SECRET=your-client_secret     
+    depends_on: #Specifies that this service depends on the "sqlite3" service, meaning that the "sqlite3" service will be started before this service.
+      - keycloak
+      - sqlite3
+    networks:
+      - andromeda-network
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    environment:
+      DB_VENDOR: h2
+      KEYCLOAK_ADMIN: admin 
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KEYCLOAK_IMPORT: /tmp/realm-export.json
+    volumes:
+      - ./realm-export.json:/tmp/realm-export.json  
+    ports:
+      - "8080:8080"
+    command: start-dev
+    networks:
+      - andromeda-network
+
+  sqlite3:
+    image: nouchka/sqlite3:latest # Use the official SQLite image
+    hostname: sqlite
+    restart: always
+    container_name: sqlite-db
+    ports:
+      - "5002:5002"
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./db:/db   # Mount the data folder for SQLite database
+    environment:
+      - SQLALCHEMY_DATABASE_URI=sqlite:///db/appl.db  # Set SQLite database URI,  which points to the `db/appl.db` file within the container.
+    networks:
+      - andromeda-network
+
+
+  # fuseki:
+  #  build: 
+  #    context: ./fuseki
+  #    dockerfile: Dockerfile
+  #  ports:
+  #    - "3030:3030"
+  #  volumes:
+  #    - fuseki-data:/fuseki 
+  #  networks:
+  #    - andromeda-network  
+  
+ # reasoner:
+ #   build: 
+ #     context: ./reasoner
+ #     dockerfile: Dockerfile
+ #   depends_on:
+ #     - fuseki
+ #   networks:
+ #     - andromeda-network
+
+volumes:
+  sqlitedata:
+  static:
+  media:
+  # fuseki-data:
+
+networks:
+  andromeda-network:

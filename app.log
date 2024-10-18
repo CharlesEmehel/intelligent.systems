@@ -1,0 +1,96 @@
+2024-05-06 19:08:24,351 ERROR: SQLAlchemyError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email_address AS user_email_address, user.password_hash AS user_password_hash, user.budget AS user_budget 
+FROM user 
+WHERE user.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('amaris ', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) [in /app/ontoML/auth.py:65]
+2024-05-06 19:08:37,664 INFO: Hello, logging! [in /app/ontoML/auth.py:64]
+2024-05-06 19:08:37,665 ERROR: SQLAlchemyError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email_address AS user_email_address, user.password_hash AS user_password_hash, user.budget AS user_budget 
+FROM user 
+WHERE user.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('amaris ', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) [in /app/ontoML/auth.py:65]
+2024-05-06 19:08:55,064 INFO: Hello, logging! [in /app/ontoML/auth.py:64]
+2024-05-06 19:08:55,064 ERROR: SQLAlchemyError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email_address AS user_email_address, user.password_hash AS user_password_hash, user.budget AS user_budget 
+FROM user 
+WHERE user.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('amaris ', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) [in /app/ontoML/auth.py:65]
+2024-05-06 19:09:06,013 INFO: Hello, logging! [in /app/ontoML/auth.py:64]
+2024-05-06 19:09:06,013 ERROR: SQLAlchemyError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email_address AS user_email_address, user.password_hash AS user_password_hash, user.budget AS user_budget 
+FROM user 
+WHERE user.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('amaris ', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) [in /app/ontoML/auth.py:65]
+2024-05-07 13:08:44,321 INFO: Hello, logging! [in /app/ontoML/auth.py:64]
+2024-05-07 13:08:44,322 ERROR: SQLAlchemyError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email_address AS user_email_address, user.password_hash AS user_password_hash, user.budget AS user_budget 
+FROM user 
+WHERE user.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('amaris ', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) [in /app/ontoML/auth.py:65]
+2024-05-07 13:08:47,145 INFO: Hello, logging! [in /app/ontoML/auth.py:64]
+2024-05-07 13:08:47,146 ERROR: SQLAlchemyError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email_address AS user_email_address, user.password_hash AS user_password_hash, user.budget AS user_budget 
+FROM user 
+WHERE user.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('amaris ', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) [in /app/ontoML/auth.py:65]
+2024-05-14 10:10:49,453 INFO: Hello, logging! [in /app/ontoML/auth.py:64]
+2024-05-14 10:10:49,454 ERROR: SQLAlchemyError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email_address AS user_email_address, user.password_hash AS user_password_hash, user.budget AS user_budget 
+FROM user 
+WHERE user.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('amaris ', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) [in /app/ontoML/auth.py:65]
+2024-05-14 10:17:59,096 INFO: Hello, logging! [in /app/ontoML/auth.py:64]
+2024-05-14 10:17:59,096 ERROR: SQLAlchemyError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email_address AS user_email_address, user.password_hash AS user_password_hash, user.budget AS user_budget 
+FROM user 
+WHERE user.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('admin', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) [in /app/ontoML/auth.py:65]
+2024-05-14 14:41:29,748 INFO: Hello, logging! [in /app/ontoML/auth.py:64]
+2024-05-14 14:41:29,749 ERROR: SQLAlchemyError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email_address AS user_email_address, user.password_hash AS user_password_hash, user.budget AS user_budget 
+FROM user 
+WHERE user.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('amaris ', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) [in /app/ontoML/auth.py:65]
+2024-05-14 14:41:50,660 INFO: Hello, logging! [in /app/ontoML/auth.py:64]
+2024-05-14 14:41:50,660 ERROR: SQLAlchemyError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email_address AS user_email_address, user.password_hash AS user_password_hash, user.budget AS user_budget 
+FROM user 
+WHERE user.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('amaris ', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) [in /app/ontoML/auth.py:65]
+2024-05-14 14:41:52,184 INFO: Hello, logging! [in /app/ontoML/auth.py:64]
+2024-05-14 14:41:52,184 ERROR: SQLAlchemyError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email_address AS user_email_address, user.password_hash AS user_password_hash, user.budget AS user_budget 
+FROM user 
+WHERE user.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('amaris ', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/14/e3q8) [in /app/ontoML/auth.py:65]
+2024-05-14 15:29:37,090 INFO: Hello, logging! [in /app/ontoML/auth.py:64]
+2024-05-14 15:29:37,090 ERROR: SQLAlchemyError: (sqlite3.OperationalError) unable to open database file
+(Background on this error at: https://sqlalche.me/e/14/e3q8) [in /app/ontoML/auth.py:65]
+2024-05-14 17:35:32,762 INFO: Hello, logging! [in /app/ontoML/auth.py:64]
+2024-05-14 17:35:32,763 ERROR: SQLAlchemyError: (sqlite3.OperationalError) unable to open database file
+(Background on this error at: https://sqlalche.me/e/14/e3q8) [in /app/ontoML/auth.py:65]
+2024-05-14 17:35:54,536 INFO: Hello, logging! [in /app/ontoML/auth.py:64]
+2024-05-14 17:35:54,537 ERROR: SQLAlchemyError: (sqlite3.OperationalError) unable to open database file
+(Background on this error at: https://sqlalche.me/e/14/e3q8) [in /app/ontoML/auth.py:65]

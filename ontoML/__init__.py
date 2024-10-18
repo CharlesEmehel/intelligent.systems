@@ -1,36 +1,81 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-import os
-from os import path
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
-import urllib.request, urllib.response, urllib.parse, urllib.error
+from flask_oidc import OpenIDConnect
+import logging
+from logging.handlers import RotatingFileHandler
+from owlready2 import get_ontology
+import os
+from dotenv import load_dotenv
+import json
+
+# Disable SSL verification for development
+os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+
+# Load environment variables from .env file
+load_dotenv()
 
 db = SQLAlchemy()
-DB_NAME = "appl.db"
-# create the app; configure the SQLite database, relative to the app instance folder; create the
-# extension; and initialize the app with the extension by passing the app to the extension
-# def create_app():
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}' # ///-Rel path; ////-Abs. path
-app.config['SECRET_KEY'] = os.urandom(12).hex()  #create a secret key required for CSRF to display the form for session and cookies
-db.init_app(app)
-bcrypt = Bcrypt(app)
-loging_manager = LoginManager(app)
-loging_manager.login_view = "login_page"
-loging_manager.login_message_category = "info"
-# return app
+bcrypt = Bcrypt()
+login_manager = LoginManager()
+oidc = OpenIDConnect()
 
+# create the andromeda application with capability to log running events to the docker container service.
+def create_app():
+    app = Flask(__name__)
+    env = os.getenv('FLASK_ENV', 'development')
+    app.config.from_object(f'config.{env.capitalize()}Config')
+    
+    db.init_app(app)
+    bcrypt.init_app(app)
+    login_manager.init_app(app)
+    oidc.init_app(app)
+    
+    login_manager.login_view = "auth.login_page"  # specify the login view
+    login_manager.login_message_category = "info"
+    
+    with app.app_context():
+        from . import models
+        from .routes import bp as main_bp
+        from .auth import auth_bp
+        from .api import api_bp
+        from .handlers import errors_bp
+        app.register_blueprint(main_bp)
+        app.register_blueprint(auth_bp, url_prefix='/auth')
+        app.register_blueprint(api_bp, url_prefix='/api')
+        app.register_blueprint(errors_bp)
+        db.create_all()
+        
+    configure_logging(app)
+        
+    return app
 
-import ontoML.models
+def configure_logging(app):
+    if not app.debug:
+        app.logger.setLevel(logging.INFO)
+        
+        file_handler = RotatingFileHandler('andromeda.log', maxBytes=10240, backupCount=1)
+        file_handler.setFormatter(logging.Formatter(
+            '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'
+        ))
+        file_handler.setLevel(logging.INFO)
+        app.logger.addHandler(file_handler)
+        
+        console_handler = logging.StreamHandler()
+        console_handler.setFormatter(logging.Formatter(
+            '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'
+        ))
+        console_handler.setLevel(logging.INFO)
+        app.logger.addHandler(console_handler)
+        
+        app.logger.info('Andromeda startup')
 
-from ontoML import auth
-from . import routes
-
+    energyaionto = get_ontology("http://energyaiontonamespace.org/energyaionton.owl")
 
 # create_database(app)
 
 def create_database(app):
     if not path.exists('ontoML/' + DB_NAME):            
-        #db.create_all((app=app))
+        db.create_all(app=app)
         print('Database created!')

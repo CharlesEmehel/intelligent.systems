@@ -1,0 +1,93 @@
+from owlready2 import get_ontology
+# from owlready2  import reasoner
+import ontoML
+import rdflib
+from ontospy import core
+from pyvis.network import Network
+
+
+
+ontoaienergy = get_ontology("http://energyaiontonamespace.org/energyaionton.owl")
+
+with ontoaienergy:
+     class Data(ontoaienergy.Thing):
+         pass
+     class System(ontoaienergy.Thing):
+         pass
+     class ObjectiveFunction(ontoaienergy.Thing):
+         pass
+     class DataAnalytics(ontoaienergy.Thing):
+         pass
+
+
+
+     class EnergySource(ontoaienergy.Thing):
+          pass
+     class PowerPlant(ontoaienergy.Thing):
+         pass
+     class EnergyLoad(ontoaienergy.Thing):
+         pass
+     class Emission(ontoaienergy.Thing):
+          pass
+
+
+     class contains(ontoaienergy.ObjectProperty):
+         domain = [System]
+         range  = [System]
+     class contains(ontoaienergy.ObjectProperty):
+          domain = [Data]
+          range  = [Data]
+     class producesEmission(ontoaienergy.ObjectProperty):
+         domain = [PowerPlant]
+         range = [Emission]
+     class usesSource(ontoaienergy.ObjectProperty):
+         domain = [PowerPlant]
+         range = [EnergySource]
+     class hasLoad(ontoaienergy.ObjectProperty):
+         domain = [PowerPlant]
+         range = [EnergyLoad]
+
+
+
+     class hasName(ontoaienergy.DataProperty):
+         domain = [Data]
+         range = [str]
+     class hasNumber(ontoaienergy.DataProperty):
+         domain = [Data]
+         range = [int]
+
+     class hasNumber(ontoaienergy.DataProperty):
+          domain = [Data]
+          range = [int]
+
+     residential = ontoaienergy.EnergyLoad("Residence")
+     commercial = ontoaienergy.EnergyLoad("Commercial")
+     industrial = ontoaienergy.EnergyLoad("Industrial")
+
+     plant1 = ontoaienergy.PowerPlant("Plant1")
+     plant1 = usesSource("Solar")
+     plant1.hasLoad = [residential]
+
+     plant2 = ontoaienergy.PowerPlant("Plant2")
+     plant2 = usesSource("Wind")
+     plant2.hasLoad = [commercial]
+
+     plant3 = ontoaienergy.PowerPlant("Plant3")
+     plant3 = usesSource("Coal")
+     plant3.hasLoad = [industrial]
+
+     co2 =  ontoaienergy.Emission("CO2")
+     plant3.producesEmision = [co2]
+
+ # reasoner.sync_reasoner()
+
+ontoaienergy.save(file="energyaionton.owl", format="turtle")
+
+
+
+g = Network()
+g.add_node(0)
+g.add_node(1)
+g.add_edge(0, 1)
+g.show("basic.html")
+
