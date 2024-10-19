@@ -100,7 +100,7 @@ volumes:
   sqlitedata:
   static:
   media:
-  # fuseki-data:
+  fuseki-data:
 
 networks:
   andromedan:
