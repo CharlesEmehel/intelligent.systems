@@ -1,6 +1,6 @@
 # Smart Energy Systems
 
-An open-source project developed at the institute for the Automation of Complex Power Systems at the RWTH Aachen University and dedicated to developing semantic interoperability solutions for integrating and optimizing multiple energy sectors—electricity, heating/cooling, gas, and transportation—to create a sustainable and efficient energy future.
+An open-source project developed at the institute for the Automation of Complex Power Systems at the RWTH Aachen University and dedicated to developing semantic interoperability solutions for integrating and optimizing multiple energy systems in sectors: electricity, heating/cooling, gas, and transportation—to create a sustainable and efficient energy future.
 
 ## Table of Contents
 
