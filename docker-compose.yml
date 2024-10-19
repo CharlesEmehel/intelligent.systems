@@ -77,25 +77,24 @@ services:
       - andromedan
 
 
-  # fuseki:
-  #  build: 
-  #    context: ./fuseki
-  #    dockerfile: Dockerfile
-  #  ports:
-  #    - "3030:3030"
-  #  volumes:
-  #    - fuseki-data:/fuseki 
-  #  networks:
-  #    - andromedan 
-  
- # reasoner:
- #   build: 
- #     context: ./reasoner
- #     dockerfile: Dockerfile
- #   depends_on:
- #     - fuseki
- #   networks:
- #     - andromedan
+  fuseki:
+   build: 
+     context: ./fuseki
+     dockerfile: Dockerfile
+   ports:
+     - "3030:3030"
+   volumes:
+     - fuseki-data:/fuseki 
+   networks:
+     - andromedan 
+  reasoner:
+   build: 
+     context: ./reasoner
+     dockerfile: Dockerfile
+   depends_on:
+     - fuseki
+   networks:
+     - andromedan
 
 volumes:
   sqlitedata:
